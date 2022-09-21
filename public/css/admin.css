@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@100;400;700&display=swap');
+
+*{
+    background-color: #E6E1D8;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+body{
+    display: flex;
+}
+
+#menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    height: 98vh;
+    width: 15vw;
+    background-color: whitesmoke;
+    box-shadow: 8px 1px 5px whitesmoke;
+}
+
+#menu img, h3, p{
+    background: none;
+}
+
+#menu img:first-child {
+    margin: 3vh 0;
+    width: 50px;
+    height: 50px;
+}
+
+#menu h3 {
+    margin-bottom: 7vh;
+}
+
+#menu .row img {
+    width: 30px;
+    height: 30px;
+    justify-content: start;
+}
+
+#menu .row p {
+    text-transform: uppercase;
+    margin-left: 1vw;
+}
+
+#menu .row{
+    display: flex;
+    background: none;
+    align-items: center;
+}
+
+#menu a {
+    background: none;
+    text-decoration: none;
+    color: black;
+}
+
+#traco {
+    margin-top: 10vh;
+    height: 1px;
+    width: 13vw;
+    border-bottom: 1px solid whitesmoke;
+    box-shadow: 1px 1px 10px #000;
+}
+
+#conteudo {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    width: 85vw;
+    margin-top: 5vh;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.conteudoadmin{
+    margin: 30px;
+}
+
+.conteudoadmin p{
+    margin-bottom: 1vh;
+    font-weight:bolder ;
+}
+
+.conteudoadmin input:not(:first-child) {
+    margin-left: 2vw;
+}
+
+.botao {
+    display: flex;
+    width: 85vw;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #f44336; /* Green */
+    border-radius: 8px;    
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+    cursor: pointer;
+}
