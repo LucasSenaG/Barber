@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicosTable extends Migration
+class CreateConfigTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateServicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicos', function (Blueprint $table) {
+        Schema::create('config', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nmservico');
-            $table->float('valor');
+            $table->json('diasaberto');
+            $table->time('horaabre');
+            $table->time('horafecha');
         });
     }
 
@@ -28,11 +29,12 @@ class CreateServicosTable extends Migration
      */
     public function down()
     {
-        Schema::create('servicos', function (Blueprint $table) {
+        Schema::create('config', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->dropColumn('nmservico');
-            $table->dropColumn('valor');
+            $table->dropColumn('diasaberto');
+            $table->dropColumn('horaabre');
+            $table->dropColumn('horafecha');
         });
     }
 }

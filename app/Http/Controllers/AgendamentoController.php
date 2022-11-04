@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Config;
+use App\Models\Servicos;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Return_;
 
 class AgendamentoController extends Controller
 {
@@ -40,7 +43,6 @@ class AgendamentoController extends Controller
         return view('/confirmacao', ['data' => $dtagenda, 'request' => $request, 'databd' => $dtdisponivel]);
     }
 
-
     public function agendaDisponivel ($dataagenda){
         $results = DB::select("select id from agendas where datahora like '%$dataagenda%'");
         $qtdagendadia = count($results);
@@ -64,5 +66,27 @@ class AgendamentoController extends Controller
             };
         }
         return null;
+    }
+
+    public function storeconfig (Request $request){
+        
+        $config = new Config();         
+        $config->horaabre = date_create($request->horaabertura);
+        $config->horafecha = date_create($request->horafechamento);
+        $config->diasaberto = $request->dia;
+
+        $servicos = new Servicos();
+        $servicos->nmservico = $request->servico;
+        $servicos->valor = $request->valor;
+        
+        $servicos->save();
+        $config->save();
+    }
+
+    public function buscadef (){
+        $resultsconf = DB::select("select * from configs");
+        $resultsserv = DB::select("select * from servicos");
+
+        return view('/admindefinicoes', ['configs' => $resultsconf, 'servicos' => $resultsserv]);
     }
 }

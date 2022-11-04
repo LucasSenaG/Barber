@@ -11,7 +11,7 @@
 <body>
     <header>
         <!-- <a href="/admin"><img src="{{ asset('img/icon/barbearia.png') }}" alt="Logo Barbearia"></a> -->
-        <a href="/admin"><img src="https://cdn-icons-png.flaticon.com/512/8354/8354108.png" alt="Logo Barbearia"></a>
+        <a href="/admin" id="logo"><img src="https://cdn-icons-png.flaticon.com/512/8354/8354108.png" alt="Logo Barbearia" ></a>
         <div id="menu">
             <a href="#unidades"><h3>Unidades</h3></a>
             <a href="#sobre"><h3>Sobre</h3></a>
@@ -19,6 +19,9 @@
             <a href="#servicos"><h3>Serviços</h3></a>
             <a href="#agendamento"><h3>Agendar</h3></a>
         </div>
+        <button id="menubtn" onclick="menumobile()">
+            <img src="https://cdn-icons-png.flaticon.com/512/4294/4294414.png">
+        </button>
         <div class="social">
             <a href="https://www.facebook.com" target="_blank"><img src="{{ asset('img/icon/fb-removebg-preview.png') }}" alt="Facebook"></a>
             <a href="https://www.instagram.com" target="_blank"><img src="{{ asset('img/icon/insta.png') }}" alt="Instagram"></a>
@@ -71,35 +74,44 @@
     </div>
     <div id="unidades">
         <div class="unidade">
+            <div class="background"></div>
             <img src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Unidade 1">
-            <h4>Unidade</h4>
-            <h2>Teixeira Dias</h2>
-            <address>Rua Antonio Teixeira Dias, 521</address>
-            <span>(31) 99876-5432</span>
+            <div class="txtunidade">
+                <h4>Unidade</h4>
+                <h2>Teixeira Dias</h2>
+                <address>Rua Antonio Teixeira Dias, 521</address>
+                <span>(31) 99876-5432</span>
+            </div>
         </div>
         <div class="unidade">
-            <!-- <img src="{{ asset('img/unidades/unidade2.jpg') }}" alt="Unidade 2"> -->
+            <div class="background"></div>
             <img src="https://images.unsplash.com/photo-1516470930795-6ba2564824aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" alt="Unidade 2">
-            <h4>Unidade</h4>
-            <h2>Barreiro</h2>
-            <address>Av. Olinto Meireles, 5521</address>
-            <span>(31) 91234-5678</span>
+            <div class="txtunidade">
+                <h4>Unidade</h4>
+                <h2>Barreiro</h2>
+                <address>Av. Olinto Meireles, 5521</address>
+                <span>(31) 91234-5678</span>
+            </div>
         </div>
         <div class="unidade">
-            <!-- <img src="{{ asset('img/unidades/unidade3.jpg') }}" alt="Unidade 3"> -->
+            <div class="background"></div>
             <img src="https://images.unsplash.com/photo-1573588546512-2ace898aa480?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Unidade 3">
-            <h4>Unidade</h4>
-            <h2>Santa Helena</h2>
-            <address>Rua José Faleiro, 1578</address>
-            <span>(31) 99876-5432</span>
+            <div class="txtunidade">
+                <h4>Unidade</h4>
+                <h2>Santa Helena</h2>
+                <address>Rua José Faleiro, 1578</address>
+                <span>(31) 99876-5432</span>
+            </div>
         </div>
         <div class="unidade">
-            <!-- <img src="{{ asset('img/unidades/unidade4.jpg') }}" alt="Unidade 4"> -->
+            <div class="background"></div>
             <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Unidade 4">
-            <h4>Unidade</h4>
-            <h2>Milionários</h2>
-            <address>Rua Caetano Pirri, 21</address>
-            <span>(31) 99876-5432</span>
+            <div class="txtunidade">
+                <h4>Unidade</h4>
+                <h2>Milionários</h2>
+                <address>Rua Caetano Pirri, 21</address>
+                <span>(31) 99876-5432</span>
+            </div>
         </div>
     </div>
     <div id="sobre">
@@ -180,13 +192,17 @@
             </div>
 
             <div class="row">
-                <label>Serviços: </label>
-                <input type="checkbox" name="servico[]" id="cabelo" value="cabelo"> Cabelo
-                <input type="checkbox" name="servico[]" id="barba" value="barba"> Barba 
-                <input type="checkbox" name="servico[]" id="cabeloBarba" value="cabeloBarba"> Cabelo e Barba
-                <input type="checkbox" name="servico[]" id="pezinho" value="pezinho"> Pezinho
-                <input type="checkbox" name="servico[]" id="sobrancelha" value="sobrancelha"> Sobrancelha
-                <input type="checkbox" name="servico[]" id="barboterapia" value="barboterapia"> Barboterapia
+                <div id="servico">
+                    <div id="title">
+                        <label>Serviços: </label>
+                    </div>
+                    <input type="checkbox" name="servico[]" id="cabelo" value="cabelo"> Cabelo
+                    <input type="checkbox" name="servico[]" id="barba" value="barba"> Barba 
+                    <input type="checkbox" name="servico[]" id="cabeloBarba" value="cabeloBarba"> Cabelo e Barba
+                    <input type="checkbox" name="servico[]" id="pezinho" value="pezinho"> Pezinho
+                    <input type="checkbox" name="servico[]" id="sobrancelha" value="sobrancelha"> Sobrancelha
+                    <input type="checkbox" name="servico[]" id="barboterapia" value="barboterapia"> Barboterapia
+                </div>
             </div>
             
 
@@ -199,6 +215,18 @@
                         <option value="Barreiro">Barreiro</option>
                         <option value="SantaHelena">Santa Helena</option>
                         <option value="Milionarios">Milionários</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="checkbox-servicos">
+                    <label>Barbeiro:</label>
+                    <select name="barbeiro" id="barbeiro">
+                        <option value=" ">Selecione uma atendente</option>
+                        <option value="Joao">João</option>
+                        <option value="Tiago">Tiago</option>
+                        <option value="Pedro">Pedro</option>
                     </select>
                 </div>
             </div>

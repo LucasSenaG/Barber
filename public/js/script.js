@@ -14,3 +14,12 @@ function nextImage(){
     document.getElementById("radio"+count).checked = true;
 
 }
+
+function menumobile() {
+    const menu = document.getElementById("menu");
+    if (menu.style.display == "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex"
+    }
+}

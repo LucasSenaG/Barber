@@ -23,7 +23,7 @@ header {
     height: 15vh;
 }
 
-header img {
+header a img {
     padding: 15px 50px;
     width: 70px;
     height: 70px;
@@ -35,6 +35,10 @@ header #menu {
     justify-content: center;
     align-items: center;
     background: none;    
+}
+
+header button {
+    display: none;
 }
 
 header h3, a {
@@ -58,6 +62,10 @@ header h3:hover {
 #menu a:last-child h3:hover{
     color: black;
     background-color: #ac8f73;
+}
+
+header #menubtn img {
+    display: none;
 }
 
 .social {
@@ -142,46 +150,11 @@ header h3:hover {
     margin-left: -75%;
 }
 
-/*.navigation-auto div{
-    border: 2px solid blue;
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.navigation-auto {
-    position: absolute;
-    width: 800px;
-    margin-top: 400px;
-    display: flex;
-    justify-content: center;
-}
-
-.navigation-auto div:not(:last-child){
-    margin-right: 30px;
-}
-
-#radio1:checked ~ .navigation-auto .auto-btn1 {
-    background-color: #000;
-}
-
-#radio2:checked ~ .navigation-auto .auto-btn2 {
-    background-color: #000;
-}
-
-#radio3:checked ~ .navigation-auto .auto-btn3 {
-    background-color: #000;
-}
-
-#radio4:checked ~ .navigation-auto .auto-btn4 {
-    background-color: #000;
-} */
-
 #unidades{
     display: flex;
     margin-top: 80px;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 .unidade{
@@ -192,7 +165,8 @@ header h3:hover {
     text-transform: uppercase;
     background-color: #C09F80;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
 .unidade img{
@@ -207,14 +181,9 @@ header h3:hover {
     background-color: #C09F80;
 }
 
-.unidade:hover {
-    margin-top: 10px;
-    transition: 0.6s;
-    cursor: pointer;
-    color: #E6E1D8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.unidade .txtunidade {
+    margin-top: 3vh;
+    background: none;
 }
 
 #sobre{
@@ -286,7 +255,7 @@ header h3:hover {
     display: flex;
     margin-top: 50px;
     padding-bottom: 50px;
-    border-bottom: 15px solid #76323F;
+    border-bottom: 0;
 }
 
 #servicos #img{
@@ -343,7 +312,7 @@ header h3:hover {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin-bottom: 8vh;
+    margin-bottom: 25vh;
 }
 
 #agendamento:not(:first-child){
@@ -364,7 +333,7 @@ header h3:hover {
     display: block;
     border: 3px solid #000;
     width: 35vw;
-    height: 75vh;
+    height: 90vh;
     margin-top: 35px;
     background-color: #ac8f73;
     border-radius: 13px;
@@ -414,6 +383,16 @@ header h3:hover {
     margin-top: -10px;
 }
 
+#agendamento .row #servico {
+    display: block;
+    background-color: #ac8f73;        
+}
+
+#agendamento .row #servico #title{
+    display: block;
+    background-color: #ac8f73; 
+}
+
 footer{
     height: 30vh;
     width: 98vw;
@@ -450,3 +429,314 @@ footer h1, h5{
     font-size: 1.5em;
 }
 
+@media screen and (max-width: 480px) {
+    header {
+        display: flex;
+        background-color: #76323F;
+        height: 10vh;
+        margin: 0;
+        width: 100%;
+    }
+    
+    header #logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    header a img {
+        padding: 0;
+        margin-left: 5vw;
+        width: 40px;
+        height: 40px;
+    }
+    
+    header #menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        position: absolute;
+        margin-left: 70.5%;
+        margin-top: 9vh;
+        padding: 2vh 0;
+        background-color: #76323F;
+        border-radius: 8px;
+        display: none;
+        z-index: 2;
+    }
+
+    header #menu a {
+        margin: 2vh 0;
+        border-right: 1px solid #E6E1D8;
+        padding-right: 1px;
+        margin-right: 1.3vw;
+    }
+
+    #menu a:last-child {
+        border: none;
+    }
+
+    header #menubtn img{
+        display: flex;
+        align-items: center;
+        background: none;
+        width: 30px;
+        height: 30px;
+        margin-right: 5vw;
+    }
+
+    header .social { 
+        display: none;
+    }
+
+    .propaganda {
+        display: none;
+        /* display: none;
+        z-index: -1;
+        width: 80%;
+        height: 50%; */
+    }
+
+    #unidades {
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .unidade{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 15vh;
+        font-size: 8px;
+        background-color: #ac8f73;
+    }
+
+    .unidade .background{
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+        background-position-x: 50%;
+        opacity: 0.7;
+    }
+
+    .unidade img{
+        display: none;
+    }
+
+    .unidade h4 {
+        display: none;
+    }
+
+    .unidade h2{
+        display: fl      
+    }
+    
+    #unidades .unidade .txtunidade {
+        background-color: #C09F80;
+    }
+
+    #unidades .unidade .txtunidade h2 {
+        text-size-adjust: unset;
+    }
+
+    #sobre{
+        margin-top: 10px;
+        padding-top: 20px;
+    }
+    
+    #sobre #texto{
+        background: none;
+        margin-left: 10px;
+        width: 90vw;
+        height: 90vh;
+        padding-bottom: 60px;
+    }
+    
+    #sobre #texto h1 {
+        background: none;
+        margin-bottom: 25px;
+        border-left: 5px solid #E6E1D8;
+        padding-left: 5px;
+    }
+    
+    #sobre #texto p{
+        padding: 10px;
+        background: none;
+        color: #E6E1D8;
+        text-align: justify;
+    }
+    
+    #sobre #img {
+        display: none;
+        width: 60vw;
+        height: 90vh;
+        overflow: hidden;
+        background: none;
+    }
+    
+    #sobre img {
+        background: none;
+        position: sticky;
+        width: 100%;
+    }
+    
+    #produtos {
+        display: none;
+    }
+
+    #servicos {
+        display: flex;
+        padding-left: 20px;
+        margin-top: 0px;
+        padding-bottom: 50px;
+    }
+    
+    #servicos #img{
+        display: none;
+    }
+    
+    #servicos #titulo { 
+        margin: 50px 0px;
+        padding: 5px;
+        border-left: 5px solid #76323F;
+    }
+    
+    #serviços .coluna{
+        display: flex;
+        height: 100vh;
+        width: 30vw;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+    
+    #servicos .linha{
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 1.3em;
+    }
+    
+    #servicos p{
+        margin: 15px;
+    }
+    
+    #servicos p:last-child{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    #servicos .coluna .linha img {
+        width: 5%;
+    }
+    
+    #servicos .coluna .linha p:last-child{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    #servicos .coluna .linha:not(:first-child){
+        border-bottom: 3px solid #76323F;
+    }
+    
+    #servicos .linha :not(:last-child){
+        width: 50vw;
+    }
+
+    #agendamento{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin-bottom: 8vh;
+    }
+    
+    #agendamento:not(:first-child){
+        align-items: center;
+    }
+    
+    #agendamento h1{
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+        background-color: #76323F;
+        width: 92.2vw;
+        padding: 1em;
+        color: #E6E1D8;
+    }
+    
+    #agendamento form{
+        display: block;
+        border: 3px solid #000;
+        width: 85vw;
+        height: 80vh;
+        margin-top: 35px;
+        background-color: #ac8f73;
+        border-radius: 13px;
+    }
+    
+    #agendamento label, input, select, option, button, #checkbox-servicos, span{
+        background: none;
+    }
+    
+    #agendamento .row{
+        background:none;
+        margin: 25px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+    }
+
+    #agendamento .row #servico {
+        display: block;
+        background-color: #ac8f73;        
+    }
+    
+    #agendamento .row #servico #title{
+        display: block;
+        background-color: #ac8f73;        
+    }
+
+    #agendamento .row #servico input{
+        background: none;
+    }
+
+    #agendamento input{
+        border: 1px solid #000;
+        border-radius: 15px;
+        padding: 3px;
+        padding-left: 7px;
+        color: #E6E1D8;
+        margin-left: 32px;
+        margin-bottom: 10px;
+    }
+    
+    #agendamento label{
+        font-weight: bold;
+    }
+    
+    #agendamento form .row #btn_agendamento{
+        padding: 5px;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: #E6E1D8;
+        cursor: pointer;
+    }
+    
+    #agendamento form .row #btn_agendamento:hover {
+        background-color: #fff;
+    }
+    
+    #agendamento form .row:last-child{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -10px;
+    }
+    
+
+    footer {
+        display: none;
+    }
+
+}

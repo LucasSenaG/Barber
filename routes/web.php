@@ -22,7 +22,6 @@ Route::get('/produtos', function () {
     return view('produtos');
 });
 
-Route::post('/agendamento', [AgendamentoController::class, 'store']);
 
 Route::get('/admin', function (){
     return view('admin');
@@ -36,11 +35,15 @@ Route::get('/adminagenda', function (){
     return view('adminagenda');
 });
 
-Route::get('/admindefinicoes', function (){
-    return view('admindefinicoes');
-});
-
 Route::get('/adminvalores', function (){
     return view('adminvalores');
 });
 
+Route::post('/agendamento', [AgendamentoController::class, 'store']);
+Route::post('/salvarconfig', [AgendamentoController::class, 'storeconfig']);
+Route::get('/admindefinicoes', [AgendamentoController::class, 'buscadef']);
+
+
+// Route::get('/admindefinicoes', function (){
+// return view('admindefinicoes');
+// });
