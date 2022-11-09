@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigTable extends Migration
+class CreateAtendentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateConfigTable extends Migration
      */
     public function up()
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('atendentes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->json('diasaberto');
-            $table->time('horaabre');
-            $table->time('horafecha');
+            $table->string('nmatendente');
+            $table->integer('qtdatendimentos');
+            $table->float('vlrarrecadado');
         });
     }
 
@@ -29,12 +29,12 @@ class CreateConfigTable extends Migration
      */
     public function down()
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('atendentes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->dropColumn('diasaberto');
-            $table->dropColumn('horaabre');
-            $table->dropColumn('horafecha');
+            $table->dropColumn('nmatendente');
+            $table->dropColumn('qtdatendimento');
+            $table->dropColumn('vlrarrecadado');
         });
     }
 }

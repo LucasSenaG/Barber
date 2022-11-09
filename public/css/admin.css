@@ -112,3 +112,13 @@ button {
     width: 150px;
     cursor: pointer;
 }
+
+.campodefinicoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.linhadefinicoes {
+    display: flex;
+    flex-direction: row;
+}

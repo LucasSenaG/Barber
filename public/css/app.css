@@ -661,7 +661,7 @@ footer h1, h5{
         justify-content: center;
         text-transform: uppercase;
         background-color: #76323F;
-        width: 92.2vw;
+        width: 100%;
         padding: 1em;
         color: #E6E1D8;
     }
@@ -734,9 +734,10 @@ footer h1, h5{
         margin-top: -10px;
     }
     
-
     footer {
-        display: none;
+        display: flex;
+        height: 15vh;
+        width: 100%;
     }
 
 }

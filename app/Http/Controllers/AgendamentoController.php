@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Atendentes;
 use App\Models\Config;
 use App\Models\Servicos;
+use App\Models\Unidades;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
@@ -78,15 +80,30 @@ class AgendamentoController extends Controller
         $servicos = new Servicos();
         $servicos->nmservico = $request->servico;
         $servicos->valor = $request->valor;
+
+        $unidades = new Unidades();
+        $unidades->nomeund = $request->unidade;
+        $unidades->endereco = $request->endereco;
         
+        $atendentes = new Atendentes();
+        $atendentes->nmatendente = $request->atendente;
+        $atendentes->qtdatendimentos = 0;
+        $atendentes->vlrarrecadado = 0;
+
+
         $servicos->save();
         $config->save();
+        $unidades->save();
+        $atendentes->save();
     }
 
     public function buscadef (){
         $resultsconf = DB::select("select * from configs");
         $resultsserv = DB::select("select * from servicos");
+        $resultsunid = DB::select("select * from unidades");
+        $resultsatend= DB::select("select * from atendentes");
 
-        return view('/admindefinicoes', ['configs' => $resultsconf, 'servicos' => $resultsserv]);
+        return view('/admindefinicoes', ['configs' => $resultsconf, 'servicos' => $resultsserv, 
+                    'unidades' => $resultsunid, 'atendentes' => $resultsatend]);    
     }
 }

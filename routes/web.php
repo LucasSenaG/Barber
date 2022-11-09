@@ -40,7 +40,7 @@ Route::get('/adminvalores', function (){
 });
 
 Route::post('/agendamento', [AgendamentoController::class, 'store']);
-Route::post('/salvarconfig', [AgendamentoController::class, 'storeconfig']);
+Route::put('/salvarconfig', [AgendamentoController::class, 'storeconfig']);
 Route::get('/admindefinicoes', [AgendamentoController::class, 'buscadef']);
 
 
