@@ -16,9 +16,10 @@ class CreateagendasTable extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nmCliente');
-            $table->dateTime('datahora');
-            $table->json('servicos');
+            $table->string('nmCliente')->nullable();
+            $table->dateTime('datahora')->nullable();
+            $table->json('servicos')->nullable();
+            $table->string('atendente')->nullable();
         });
     }
 
@@ -33,6 +34,7 @@ class CreateagendasTable extends Migration
             $table->dropColumn('nmCliente');
             $table->dropColumn('datahora');
             $table->dropColumn('servicos');
+            $table->dropColumn('idatendente');
         });
     }
 }

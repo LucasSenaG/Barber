@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Route::get('/produtos', function () {
     return view('produtos');
 });
@@ -31,19 +27,22 @@ Route::get('/adminprodutos', function (){
     return view('adminprodutos');
 });
 
-Route::get('/adminagenda', function (){
-    return view('adminagenda');
-});
+// Route::get('/adminagenda', function (){
+//     return view('adminagenda');
+// });
 
 Route::get('/adminvalores', function (){
     return view('adminvalores');
 });
 
+Route::get('/adminpontos', function(){
+    return view('adminpontos');
+});
+
 Route::post('/agendamento', [AgendamentoController::class, 'store']);
 Route::put('/salvarconfig', [AgendamentoController::class, 'storeconfig']);
 Route::get('/admindefinicoes', [AgendamentoController::class, 'buscadef']);
+Route::get('/', [AgendamentoController::class, 'buscabd']);
+Route::get('/adminagenda', [AgendamentoController::class, 'exibeagenda']);
+Route::get('/pesquisadata', [AgendamentoController::class, 'pesquisadata']);
 
-
-// Route::get('/admindefinicoes', function (){
-// return view('admindefinicoes');
-// });

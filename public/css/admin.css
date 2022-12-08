@@ -16,6 +16,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+    margin: 0;
     padding: 5px;
     height: 98vh;
     width: 15vw;
@@ -71,6 +73,7 @@ body{
 #conteudo {
     display: flex;
     flex-direction: column;
+    margin-left: 15vw;
 }
 
 h1 {
@@ -101,7 +104,7 @@ h1 {
 }
 
 button {
-    background-color: #f44336; /* Green */
+    background-color: #f44336; 
     border-radius: 8px;    
     color: white;
     padding: 15px 32px;
@@ -121,4 +124,64 @@ button {
 .linhadefinicoes {
     display: flex;
     flex-direction: row;
+}
+
+#novalinha{
+    display: none;
+}
+
+.msgretorno {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.msgretorno .linhamsgretorno .msg{
+    display: flex;
+    background: none;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5vh 32.8vw;
+    width: max-content;
+    background-color: green;
+}
+
+.cabecalho{
+    display: flex;
+    margin-top: 5vh;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.linhacalendario{
+    display: flex;
+    margin-top: 5vh;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid #000;
+}
+
+.servicosagenda{
+    min-width: 20em;
+}
+
+.editarexcluir{
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+}
+
+.editarexcluir img{
+    margin: 2px;
+    cursor: pointer;
+}
+
+.btnbuscaagenda button{
+    height: 35px;
+    width: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

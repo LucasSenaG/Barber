@@ -16,9 +16,16 @@ class CreateConfigsTable extends Migration
         Schema::create('configs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->json('diasaberto');
-            $table->time('horaabre');
-            $table->time('horafecha');
+            $table->time('horaabre')->nullable();
+            $table->time('horafecha')->nullable();
+            // $table->json('diasaberto')->nullable();
+            $table->binary('Domingo')->nullable();
+            $table->binary('Segunda')->nullable();
+            $table->binary('Terca')->nullable();
+            $table->binary('Quarta')->nullable();
+            $table->binary('Quinta')->nullable();
+            $table->binary('Sexta')->nullable();
+            $table->binary('Sabado')->nullable();
         });
     }
 

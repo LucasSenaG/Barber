@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="{{ asset('img/icon/barbearia.png') }}" alt="Logo Barbearia">
+    <a href="/admin" id="logo"><img src="https://cdn-icons-png.flaticon.com/512/8354/8354108.png" alt="Logo Barbearia" ></a>
         <div id="menu">
             <a href="/#unidades"><h3>Unidades</h3></a>
             <a href="/#sobre"><h3>Sobre</h3></a>
@@ -27,7 +27,6 @@
         <p><span>{{ $request->nome }}</span>, o seu atendimento foi agendado para o dia {{ $data }} às {{ $request->hora }}.</p>    
         <img src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" alt="Check">
         <p>Esperamos por você!</p>
-        <p>{{ var_dump($databd) }}</p>
     </div>
 </body>
 </html>

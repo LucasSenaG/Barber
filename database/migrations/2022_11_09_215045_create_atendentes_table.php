@@ -16,9 +16,9 @@ class CreateAtendentesTable extends Migration
         Schema::create('atendentes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nmatendente');
-            $table->integer('qtdatendimentos');
-            $table->float('vlrarrecadado');
+            $table->string('nmatendente')->nullable();
+            $table->integer('qtdatendimentos')->nullable();
+            $table->float('vlrarrecadado')->nullable();
         });
     }
 

@@ -1,5 +1,12 @@
 @extends('admin')
 @section('conteudoadmin')
+    <div class="msgretorno">
+        <div class="linhamsgretorno">
+            @if (session('msg'))
+                <p class="msg">{{ session('msg') }}</p>
+            @endif
+        </div>
+    </div>
     <h1>Definições</h1>
     <form action="/salvarconfig" method="POST">
         @csrf
@@ -17,13 +24,63 @@
         </div>
         <div class="conteudoadmin">
             <p>Dias de funcionamento:</p>
-            <input type="checkbox" name="dia[]" value="domingo"> Domingo
-            <input type="checkbox" name="dia[]" value="segunda"> Segunda Feira
-            <input type="checkbox" name="dia[]" value="terca"> Terça Feira
-            <input type="checkbox" name="dia[]" value="quarta"> Quarta Feira
-            <input type="checkbox" name="dia[]" value="quinta"> Quinta Feira
-            <input type="checkbox" name="dia[]" value="sexta"> Sexta Feira
-            <input type="checkbox" name="dia[]" value="sabado"> Sábado
+            @if ($configs != null)
+                @if ($configs[0]->Domingo != null)
+                    <input type="checkbox" name="Domingo" checked> Domingo
+                @else
+                    <input type="checkbox" name="Domingo"> Domingo
+                @endif
+
+
+                @if ($configs[0]->Segunda != null)
+                    <input type="checkbox" name="Segunda" checked> Segunda Feira
+                @else
+                    <input type="checkbox" name="Segunda"> Segunda Feira
+                @endif
+
+
+                @if ($configs[0]->Terca != null)
+                    <input type="checkbox" name="Terca" checked> Terça Feira
+                @else
+                    <input type="checkbox" name="Terca"> Terça Feira
+                @endif
+
+
+                @if ($configs[0]->Quarta != null)
+                    <input type="checkbox" name="Quarta" checked> Quarta Feira
+                @else
+                    <input type="checkbox" name="Quarta"> Quarta Feira
+                @endif
+
+
+                @if ($configs[0]->Quinta != null)
+                    <input type="checkbox" name="Quinta" checked> Quinta Feira
+                @else
+                    <input type="checkbox" name="Quinta"> Quinta Feira
+                @endif
+
+
+                @if ($configs[0]->Sexta != null)
+                    <input type="checkbox" name="Sexta" checked> Sexta Feira
+                @else
+                    <input type="checkbox" name="Sexta"> Sexta Feira
+                @endif
+
+
+                @if ($configs[0]->Sabado != null)
+                    <input type="checkbox" name="Sabado" checked> Sábado
+                @else
+                    <input type="checkbox" name="Sabado"> Sábado
+                @endif
+            @else
+                <input type="checkbox" name="Domingo"> Domingo
+                <input type="checkbox" name="Segunda"> Segunda
+                <input type="checkbox" name="Terca"> Terça
+                <input type="checkbox" name="Quarta"> Quarta
+                <input type="checkbox" name="Quinta"> Quinta
+                <input type="checkbox" name="Sexta"> Sexta
+                <input type="checkbox" name="Sabado"> Sábado
+            @endif
         </div>
         <div class="conteudoadmin">
             <p>Serviços e Valores:</p>
@@ -61,12 +118,10 @@
             <div class="campodefinicoes">
                 @foreach ($atendentes as $atendente)
                 <div class="linhadefinicoes">
-                    <input type="text" name="atendente" placeholder="Novo atendente" value="{{ $atendente->nmatendente }}">
+                    <input type="text" name="atendente" placeholder="Novo atendente" value="{{ $atendente->nmatendente }}" onchange="adclinha()">
                 </div>
                 @endforeach
-                <div class="linhadefinicoes">
-                    <input type="text" name="atendente" placeholder="Novo atendente">
-                </div>
+                <input type="text" name="atendente" placeholder="Novo atendente">
             </div>
         </div>
 

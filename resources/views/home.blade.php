@@ -139,36 +139,48 @@
             <div id="titulo">
                 <h1>Nossos Serviços</h1>
             </div>
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/42/42055.png" alt="icon-hair">
-                <p>Corte de cabelo</p>
-                <p>R$ 30,00</p>
+                <p>{{ $servicos[0]->nmservico }}</p>
+                <p>{{ $servicos[0]->valor }}</p>
             </div>            
+            @endif
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/273/273433.png" alt="icon-barba">
-                <p>Barba com Toalha Quente</p>
-                <p>R$ 40,00</p>
+                <p>{{ $servicos[1]->nmservico ?? ''}}</p>
+                <p>{{ $servicos[1]->valor ?? '' }}</p>
             </div>            
+            @endif
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/5747/5747102.png" alt="icon-cabelo-barba">
-                <p>Corte de Cabelo e Barba</p>
-                <p>R$ 70,00</p>
+                <p>{{ $servicos[2]->nmservico ?? ''}}</p>
+                <p>{{ $servicos[2]->valor ?? ''}}</p>
             </div>            
+            @endif
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/2821/2821012.png" alt="Navalha">
-                <p>Pezinho</p>
-                <p>R$ 20,00</p>
+                <p>{{ $servicos[3]->nmservico ?? ''}}</p>
+                <p>{{ $servicos[3]->valor ?? ''}}</p>
             </div>            
+            @endif
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/82/82862.png" alt="Sobranchela">
-                <p>Sobrancelha</p>
-                <p>R$ 20,00</p>
+                <p>{{ $servicos[4]->nmservico ?? ''}}</p>
+                <p>{{ $servicos[4]->valor ?? ''}}</p>
             </div>            
+            @endif
+            @if ($servicos != null)
             <div class="linha">
                 <img src="https://cdn-icons-png.flaticon.com/512/5256/5256952.png" alt="Barboterapia">
-                <p>Barboterapia</p>
-                <p>R$ 75,00</p>
+                <p>{{ $servicos[5]->nmservico ?? ''}}</p>
+                <p>{{ $servicos[5]->valor ?? ''}}</p>
             </div>            
+            @endif
         </div>
         <div class="coluna"></div>
     </div>
@@ -210,11 +222,9 @@
                 <div id="checkbox-servicos">
                     <label>Unidade:</label>
                     <select name="unidade" id="unidade">
-                        <option value=" ">Selecione uma unidade</option>
-                        <option value="TeixeraDias">Teixeira Dias</option>
-                        <option value="Barreiro">Barreiro</option>
-                        <option value="SantaHelena">Santa Helena</option>
-                        <option value="Milionarios">Milionários</option>
+                        @foreach ($unidades as $unidade)
+                            <option value="{{ $unidade->nomeund }}">{{ $unidade->nomeund }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -223,10 +233,9 @@
                 <div id="checkbox-servicos">
                     <label>Barbeiro:</label>
                     <select name="barbeiro" id="barbeiro">
-                        <option value=" ">Selecione uma atendente</option>
-                        <option value="Joao">João</option>
-                        <option value="Tiago">Tiago</option>
-                        <option value="Pedro">Pedro</option>
+                        @foreach ($atendentes as $atendente)
+                            <option type="text" name="atendente" id="atendente" value="{{ $atendente->nmatendente }}">{{ $atendente->nmatendente }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -243,6 +252,9 @@
     </div>
     <footer>
         <h1>BARBEARIA PILOTO</h1>
+        @foreach ($unidades as $unidade)
+            <h5>{{ $unidade->nomeund }} | {{ $unidade->endereco }}</h5>
+        @endforeach
         <h5>(31) 98765-4321</h5>
     </footer>
 </body>
