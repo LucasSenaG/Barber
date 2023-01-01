@@ -62,6 +62,7 @@
             </div>
 
             <select name="atendente" id="atendente">
+                        <option value=" ">Selecione um atendente</option>
                     @foreach ($atendentes as $atendente)
                         <option value="{{ $atendente->nmatendente }}">{{ $atendente->nmatendente }}</option>
                     @endforeach
@@ -80,10 +81,17 @@
                 <div class="horarioagenda">{{ $dado->datahora }}</div>
                 <div class="nmclienteagenda">{{ $dado->nmCliente }}</div>
                 <div class="servicosagenda">{{ $dado->servicos }}</div>
+                <div class="atendente">{{ $dado->atendente }}</div>
                 <div class="vlratendimento">R$ 30,00</div>
                 <div class="editarexcluir">
                     <img src="https://cdn-icons-png.flaticon.com/512/3838/3838756.png">
-                    <img src="https://cdn-icons-png.flaticon.com/512/8788/8788372.png">
+                    <div id="btnexlcuir">
+                        <form action="/deletaagenda/{{ $dado->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"> <img src="https://cdn-icons-png.flaticon.com/512/8788/8788372.png"> </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         @endforeach

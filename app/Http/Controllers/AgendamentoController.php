@@ -31,13 +31,11 @@ class AgendamentoController extends Controller
         $resultsserv = DB::select("select * from servicos");
         $resultsunid = DB::select("select * from unidades");
         $resultsatend= DB::select("select * from atendentes");
-    
-        // ddd($resultsconf);
-    
+        
         return view('/admindefinicoes', ['configs' => $resultsconf, 'servicos' => $resultsserv, 
                     'unidades' => $resultsunid, 'atendentes' => $resultsatend]);    
     }
-    
+
     public function store (Request $request){
         $agenda = new Agenda();
         $agenda->nmCliente = $request->nome;
@@ -46,19 +44,46 @@ class AgendamentoController extends Controller
         $agenda->datahora = $datahora;
         $agenda->servicos = $request->servico;
         $agenda->atendente = $request->barbeiro;
-        
-        $dthoje = date_create('Y-m-d');
-        $hrhoje = date_create('H:i');        
+
+        $horaform = date_create_from_format('Y-m-d H:i', $datahora);
+
+        $horaabre = DB::select("select horaabre from configs");
+        $horaabre = date_create_from_format('Y-m-d H:i:s', $request->data.$horaabre[0]->horaabre);
+
+        $horafecha = DB::select("select horafecha from configs");
+        $horafecha = date_create_from_format('Y-m-d H:i:s', $request->data.$horafecha[0]->horafecha);
+
+
+        date_default_timezone_set('America/Sao_Paulo');
+        $dthoje = date('Y-m-d');
+        $hrhoje = date('H:i');
+
         if ($request->data < $dthoje) {
+            $erro = "Data ja passou.";
+            dd($erro);
             return view('/naoconfirmado');
-        } if ($request->data == $dthoje && $request->hora <= $hrhoje){
+        } else if ($request->data == $dthoje && $request->hora <= $hrhoje){
+            $erro = 'Hora ja passou';
+            dd($erro);
+            return view('/naoconfirmado');
+        }  
+
+        if ($horaform < $horaabre) {           
+            $erro = "Loja ainda nao abriu";
+            dd($erro);
+            return view('/naoconfirmado');
+        }
+
+        if ($horaform > $horafecha) {
+            $erro = "Loja já fechou";
+            dd($erro);
             return view('/naoconfirmado');
         }
 
         $dtagenda = date_create($request->data);
         $dtagenda = date_format($dtagenda, 'd/m/Y');
 
-        $dtdisponivel = $this->agendaDisponivel($agenda->datahora);
+        $dtdisponivel = $this->agendaDisponivel($agenda->datahora, $request->data);
 
         if ($dtdisponivel == null){
             $agenda->save();
@@ -69,17 +94,16 @@ class AgendamentoController extends Controller
         return view('/confirmacao', ['data' => $dtagenda, 'request' => $request, 'databd' => $dtdisponivel]);
     }
 
-    public function agendaDisponivel ($dataagenda){
-        $results = DB::select("select id from agendas where datahora like '%$dataagenda%'");
+    public function agendaDisponivel ($dataagenda, $data){    
+        $results = DB::select("select id from agendas where datahora like '$data%'");
         $qtdagendadia = count($results);
         for ($i=0 ; $i <= $qtdagendadia ; $i++){
-            $dataagenda = date_create_from_format('Y-m-d H:i', $dataagenda);
-
-            $id = $i + 1;
+            $dataagenda = date_create_from_format('Y-m-d H:i:s', $dataagenda);
+            $id = 0;
             try{
-                $databd = DB::select("select datahora from agendas where id = $id");
-                $databd = date_create_from_format('Y-m-d H:i:s', $databd[0]->datahora);
-                
+                $databd = DB::select("select datahora from agendas where datahora like '$data%'");
+                $databd = date_create_from_format('Y-m-d H:i:s', $databd[$id]->datahora);
+                $id++;
                 $difhoratotal = date_diff($dataagenda, $databd);
                 $difminutos = $difhoratotal->format('%i');
                 $difhora = $difhoratotal->format('%h');
@@ -192,6 +216,7 @@ class AgendamentoController extends Controller
     public function pesquisadata(Request $request) {
         $mes = $request->mes;
         $dia = $request->dia;
+        $ano = date('Y');
         $atendente = $request->atendente;
 
         switch ($mes) {
@@ -244,9 +269,15 @@ class AgendamentoController extends Controller
             break;
         }
 
-        $results = DB::select("select * from agendas where datahora like '2022-$mes-$dia%' and atendente = '$atendente'");
+        $results = DB::select("select * from agendas where datahora like '$ano-$mes-$dia%' and atendente = '$atendente' order by datahora");
         $atendentes = DB::select("select nmatendente from atendentes");
         return view('/adminagenda', ['dados' => $results, 'mes' => $mes, 'dia' => $dia, 'atendentes' => $atendentes]);  
     }
+    
+    public function destroy($id){
+        Agenda::findOrFail($id)->delete();
+        return $this->exibeagenda();
+    }
+
     
 }

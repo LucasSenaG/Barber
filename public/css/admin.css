@@ -176,6 +176,15 @@ button {
 .editarexcluir img{
     margin: 2px;
     cursor: pointer;
+    width: 20px;
+    padding: 0;
+    background: none;
+}
+
+.editarexcluir button{
+    background: none;
+    padding: 0;
+    width: 35px;
 }
 
 .btnbuscaagenda button{
@@ -184,4 +193,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btnbuscaagenda a{
+    text-decoration: none;
 }

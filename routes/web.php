@@ -27,10 +27,6 @@ Route::get('/adminprodutos', function (){
     return view('adminprodutos');
 });
 
-// Route::get('/adminagenda', function (){
-//     return view('adminagenda');
-// });
-
 Route::get('/adminvalores', function (){
     return view('adminvalores');
 });
@@ -45,4 +41,14 @@ Route::get('/admindefinicoes', [AgendamentoController::class, 'buscadef']);
 Route::get('/', [AgendamentoController::class, 'buscabd']);
 Route::get('/adminagenda', [AgendamentoController::class, 'exibeagenda']);
 Route::get('/pesquisadata', [AgendamentoController::class, 'pesquisadata']);
+Route::delete('/deletaagenda/{id}', [AgendamentoController::class, 'destroy']);
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

@@ -1,13 +1,3 @@
-/* PALETA DE CORES DO SITE 
-#D7CEC7 - GRAIN
-#565656 - BLACKBOARD
-#76323F - OXBLOOD
-#C09F80 - TAN 
-#E6E1D8 - BACKGROUND*/
-
-*{
-    background-color: #000;
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
