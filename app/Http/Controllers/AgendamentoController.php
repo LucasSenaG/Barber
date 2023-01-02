@@ -46,6 +46,8 @@ class AgendamentoController extends Controller
         $agenda->atendente = $request->barbeiro;
 
         $horaform = date_create_from_format('Y-m-d H:i', $datahora);
+        $diasemana = date('w', strtotime($request->data));
+        // 0 - Domingo, 1 - Segunda, 2 - Terça ... 
 
         $horaabre = DB::select("select horaabre from configs");
         $horaabre = date_create_from_format('Y-m-d H:i:s', $request->data.$horaabre[0]->horaabre);
@@ -53,6 +55,65 @@ class AgendamentoController extends Controller
         $horafecha = DB::select("select horafecha from configs");
         $horafecha = date_create_from_format('Y-m-d H:i:s', $request->data.$horafecha[0]->horafecha);
 
+        $diasabre = DB::select("select domingo, segunda, terca, quarta, quinta, sexta, sabado from configs");
+
+        switch ($diasemana){
+            case 0:
+                $result = $diasabre[0]->domingo;
+                if ($result == null){
+                    $erro = "A loja abre aos Domingos!";
+                    dd($erro);
+                }
+            break;
+
+            case 1:
+                $result = $diasabre[0]->segunda;
+                if ($result == null){
+                    $erro = "A loja abre às Segundas!";
+                    dd($erro);
+                }
+            break;
+
+            case 2:
+                $result = $diasabre[0]->terca;
+                if ($result == null){
+                    $erro = "A loja abre às Terças!";
+                    dd($erro);
+                }
+            break;
+
+            case 3:
+                $result = $diasabre[0]->quarta;
+                if ($result == null){
+                    $erro = "A loja abre às Quartas!";
+                    dd($erro);
+                }
+            break;
+
+            case 4:
+                $result = $diasabre[0]->quinta;
+                if ($result == null){
+                    $erro = "A loja abre às Quintas!";
+                    dd($erro);
+                }
+            break;
+
+            case 5:
+                $result = $diasabre[0]->sexta;
+                if ($result == null){
+                    $erro = "A loja abre às Sexta!";
+                    dd($erro);
+                }
+            break;
+
+            case 6:
+                $result = $diasabre[0]->sabado;
+                if ($result == null){
+                    $erro = "A loja abre aos Sábados!";
+                    dd($erro);
+                }
+            break;
+        }
 
         date_default_timezone_set('America/Sao_Paulo');
         $dthoje = date('Y-m-d');
@@ -278,6 +339,5 @@ class AgendamentoController extends Controller
         Agenda::findOrFail($id)->delete();
         return $this->exibeagenda();
     }
-
     
 }
