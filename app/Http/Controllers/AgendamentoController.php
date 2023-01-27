@@ -61,7 +61,7 @@ class AgendamentoController extends Controller
             case 0:
                 $result = $diasabre[0]->domingo;
                 if ($result == null){
-                    $erro = "A loja abre aos Domingos!";
+                    $erro = "A loja não abre aos Domingos!";
                     dd($erro);
                 }
             break;
@@ -69,7 +69,7 @@ class AgendamentoController extends Controller
             case 1:
                 $result = $diasabre[0]->segunda;
                 if ($result == null){
-                    $erro = "A loja abre às Segundas!";
+                    $erro = "A loja não abre às Segundas!";
                     dd($erro);
                 }
             break;
@@ -77,7 +77,7 @@ class AgendamentoController extends Controller
             case 2:
                 $result = $diasabre[0]->terca;
                 if ($result == null){
-                    $erro = "A loja abre às Terças!";
+                    $erro = "A loja não abre às Terças!";
                     dd($erro);
                 }
             break;
@@ -85,7 +85,7 @@ class AgendamentoController extends Controller
             case 3:
                 $result = $diasabre[0]->quarta;
                 if ($result == null){
-                    $erro = "A loja abre às Quartas!";
+                    $erro = "A loja não abre às Quartas!";
                     dd($erro);
                 }
             break;
@@ -93,7 +93,7 @@ class AgendamentoController extends Controller
             case 4:
                 $result = $diasabre[0]->quinta;
                 if ($result == null){
-                    $erro = "A loja abre às Quintas!";
+                    $erro = "A loja não abre às Quintas!";
                     dd($erro);
                 }
             break;
@@ -101,7 +101,7 @@ class AgendamentoController extends Controller
             case 5:
                 $result = $diasabre[0]->sexta;
                 if ($result == null){
-                    $erro = "A loja abre às Sexta!";
+                    $erro = "A loja não abre às Sexta!";
                     dd($erro);
                 }
             break;
@@ -109,7 +109,7 @@ class AgendamentoController extends Controller
             case 6:
                 $result = $diasabre[0]->sabado;
                 if ($result == null){
-                    $erro = "A loja abre aos Sábados!";
+                    $erro = "A loja não abre aos Sábados!";
                     dd($erro);
                 }
             break;
@@ -205,11 +205,18 @@ class AgendamentoController extends Controller
             $atendentes->qtdatendimentos = 0;
             $atendentes->vlrarrecadado = 0;
     
-    
-            $servicos->save();
+            if ($request->servico != null) {
+                $servicos->save();
+            }
+
+            if ($request->unidade != null){
+                $unidades->save();
+            }
+
+            if ($request->atendente != null) {
+                $atendentes->save();
+            }
             $config->save();
-            $unidades->save();
-            $atendentes->save();
             
             return redirect('/admindefinicoes')->with('msg', 'Definições salvas com sucesso!');
     }
@@ -335,6 +342,13 @@ class AgendamentoController extends Controller
         return view('/adminagenda', ['dados' => $results, 'mes' => $mes, 'dia' => $dia, 'atendentes' => $atendentes]);  
     }
     
+    public function edit($id) {
+        $dados = DB::select("select * from agendas where id = $id");
+        $atendentes = DB::select("select nmatendente from atendentes");
+
+        return view('/editar', ['dados' => $dados, 'atendentes' => $atendentes]);
+    }
+
     public function destroy($id){
         Agenda::findOrFail($id)->delete();
         return $this->exibeagenda();

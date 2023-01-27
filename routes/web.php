@@ -41,7 +41,9 @@ Route::get('/admindefinicoes', [AgendamentoController::class, 'buscadef']);
 Route::get('/', [AgendamentoController::class, 'buscabd']);
 Route::get('/adminagenda', [AgendamentoController::class, 'exibeagenda']);
 Route::get('/pesquisadata', [AgendamentoController::class, 'pesquisadata']);
+Route::get('/editaragenda/{id}', [AgendamentoController::class, 'edit']);
 Route::delete('/deletaagenda/{id}', [AgendamentoController::class, 'destroy']);
+
 
 Route::middleware([
     'auth:sanctum',

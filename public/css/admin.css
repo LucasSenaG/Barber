@@ -87,6 +87,23 @@ h1 {
     margin: 30px;
 }
 
+.conteudoadmin .titulo img {
+    display: flex;
+    width: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.conteudoadmin .titulo {
+    display: flex;
+    align-items: center;
+}
+
+.conteudoadmin .titulo .btnadclinha img:last-child {
+    display: none;
+}
+
 .conteudoadmin p{
     margin-bottom: 1vh;
     font-weight:bolder ;
@@ -197,4 +214,28 @@ button {
 
 .btnbuscaagenda a{
     text-decoration: none;
+}
+
+.linhaadicionar{
+    display: none;
+}
+
+#editar {
+    width: 85vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tituloedit{
+margin-top: 10vh;
+}
+
+#editar form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15vh;
+    justify-content: space-around;
+    height: 50vh;
 }
